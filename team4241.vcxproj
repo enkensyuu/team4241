@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)scene;c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)scene;c:\DxLib_VC\プロジェクトに追加すべきファイル_VC用;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -134,8 +134,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="scene\AbstractSceneFactory.cpp" />
+    <ClCompile Include="scene\BaseScene.cpp" />
+    <ClCompile Include="scene\GameClearScene.cpp" />
+    <ClCompile Include="scene\GameDemoScene.cpp" />
+    <ClCompile Include="scene\GameLoadScene.cpp" />
+    <ClCompile Include="scene\GameOverScene.cpp" />
+    <ClCompile Include="scene\GamePlayScene.cpp" />
+    <ClCompile Include="scene\GameSelectScene.cpp" />
+    <ClCompile Include="scene\GameTitleScene.cpp" />
+    <ClCompile Include="scene\SceneFactory.cpp" />
+    <ClCompile Include="scene\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="scene\AbstractSceneFactory.h" />
+    <ClInclude Include="scene\BaseScene.h" />
+    <ClInclude Include="scene\GameClearScene.h" />
+    <ClInclude Include="scene\GameDemoScene.h" />
+    <ClInclude Include="scene\GameLoadScene.h" />
+    <ClInclude Include="scene\GameOverScene.h" />
+    <ClInclude Include="scene\GamePlayScene.h" />
+    <ClInclude Include="scene\GameSelectScene.h" />
+    <ClInclude Include="scene\GameTitleScene.h" />
+    <ClInclude Include="scene\SceneFactory.h" />
+    <ClInclude Include="scene\SceneManager.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

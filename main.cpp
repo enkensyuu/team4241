@@ -1,4 +1,6 @@
 #include "DxLib.h"
+#include "SceneFactory.h"
+#include "SceneManager.h"
 
 // ウィンドウのタイトルに表示する文字列
 const char TITLE[] = "4241";
@@ -41,6 +43,20 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// ゲームループで使う変数の宣言
 
+	// シーンマネージャー
+	SceneManager* sceneManager_ = nullptr;
+	// シーンファクトリー
+	AbstractSceneFactory* sceneFactory_ = nullptr;
+
+	// シーンマネージャーのインスタンス取得
+	sceneManager_ = SceneManager::GetInstance();
+	// シーンファクトリーを生成し、マネージャーに最初にセット
+	sceneFactory_ = new SceneFactory();
+	sceneManager_->SetSceneFactory(sceneFactory_);
+
+	// シーンマネージャーに最初のシーンをセット
+	SceneManager::GetInstance()->ChangeScene("TITLE");
+
 
 	// 最新のキーボード情報用
 	char keys[256] = {0};
@@ -63,6 +79,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
+		sceneManager_->Update(keys, oldkeys);
+
+		// 描画処理
+		sceneManager_->Draw();
 
 
 		// 描画処理
@@ -84,6 +104,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		}
 	}
+
+	// シーンマネージャーの解放
+	sceneManager_->Finalize();
+
 	// Dxライブラリ終了処理
 	DxLib_End();
 
